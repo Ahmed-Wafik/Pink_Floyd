@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="the_dark_side_of_the_moon">
+        <item>Speak To Me</item>
+        <item>Breathe</item>
+        <item>On The Run</item>
+        <item>Time</item>
+        <item>The Great Gig In The Sky</item>
+        <item>Money</item>
+        <item>Us And Them</item>
+        <item> Any Colour You Like</item>
+        <item>Brain Damage</item>
+        <item>Eclipse</item>
+    </string-array>
+
+
+</resources>
