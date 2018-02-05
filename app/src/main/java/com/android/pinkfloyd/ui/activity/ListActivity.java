@@ -1,15 +1,16 @@
-package com.android.pinkfloyd;
+package com.android.pinkfloyd.ui.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.android.pinkfloyd.JSONOperation;
+import com.android.pinkfloyd.R;
 import com.android.pinkfloyd.model.*;
 
 import java.util.ArrayList;
@@ -20,15 +21,9 @@ public class ListActivity extends AppCompatActivity {
     private static final String TAG = ListActivity.class.getSimpleName();
     private ListView listView;
     private List<Song> songsFromID;
-    private int id;
+    private int id=0;
     private List<String> list = new ArrayList<>();
     private JSONOperation operation;
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.i(TAG, "On Start");
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +33,7 @@ public class ListActivity extends AppCompatActivity {
         SharedPreferences.Editor edit = preferences.edit();
 
 
-        listView = findViewById(R.id.listview);
+        listView = findViewById(R.id.list_songs);
         operation = new JSONOperation(this);
 
         if (getIntent().getExtras() != null) {
@@ -57,12 +52,12 @@ public class ListActivity extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int postion, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(ListActivity.this, DetailActivity.class);
 
                 Bundle bundle = new Bundle();
-                String name = songsFromID.get(postion).getName();
-                String lyrics = songsFromID.get(postion).getLyrics();
+                String name = songsFromID.get(position).getName();
+                String lyrics = songsFromID.get(position).getLyrics();
 
                 bundle.putString("name", name);
                 bundle.putString("lyrics", lyrics);

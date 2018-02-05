@@ -3,14 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.pinkfloyd.ListActivity"
+    android:layout_height="wrap_content"
+    tools:context="com.android.pinkfloyd.ui.activity.ListActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <ListView
-        android:id="@+id/listview"
+    <FrameLayout
+        android:id="@+id/container_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/list_songs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/dividerColor"
+            android:dividerHeight="1dp" />
+
+    </FrameLayout>
+
+
 </android.support.constraint.ConstraintLayout>

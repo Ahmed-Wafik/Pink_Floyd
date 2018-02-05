@@ -1,7 +1,6 @@
 package com.android.pinkfloyd.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.graphics.Palette;
@@ -11,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.android.pinkfloyd.ListActivity;
+
+import com.android.pinkfloyd.RecyclerViewClickListener;
 import com.android.pinkfloyd.R;
 import com.android.pinkfloyd.model.Album;
 import java.util.List;
@@ -21,10 +21,12 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
     private Bitmap bitmap;
     private Context context;
     private List<Album> albumList;
+    private RecyclerViewClickListener mListener;
 
-    public AlbumsAdapter(Context context, List<Album> albumList) {
+    public AlbumsAdapter(Context context, List<Album> albumList , RecyclerViewClickListener mListener) {
         this.context = context;
         this.albumList = albumList;
+        this.mListener = mListener;
     }
 
     @Override
@@ -47,10 +49,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(context, ListActivity.class);
-
-                intent.putExtra("data", id);
-                context.startActivity(intent);
+                mListener.onClick(id);
             }
         });
         setImageAlbum(poster_path, holder);
@@ -107,7 +106,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
         return swatch;
     }
 
-    public class AlbumsViewHolder extends RecyclerView.ViewHolder {
+    public class AlbumsViewHolder extends RecyclerView.ViewHolder{
         private ImageView imageView;
         private TextView textView;
 
@@ -116,5 +115,7 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.AlbumsView
             imageView = itemView.findViewById(R.id.album_cover);
             textView = itemView.findViewById(R.id.album_name);
         }
+
+
     }
 }

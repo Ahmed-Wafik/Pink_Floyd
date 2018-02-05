@@ -1,11 +1,10 @@
-package com.android.pinkfloyd;
+package com.android.pinkfloyd.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.ArrowKeyMovementMethod;
 import android.widget.TextView;
 
-import com.android.pinkfloyd.model.Song;
+import com.android.pinkfloyd.R;
 
 public class DetailActivity extends AppCompatActivity {
 
